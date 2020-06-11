@@ -4,6 +4,22 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+#application factory
+def create_app(config_type): #dev, test or prod
+    app = Flask(__name__)
+    configuration = os.path.join(os.getcwd(),'config' , config_type + '.py')
+    app.config.from_pyfile(configuration)
+
+    db.init_app(app)
+
+   #import blueprint
+    from app.auth import auth
+    app.register_blueprint(auth)
+
+
+
+    return app
+
 
 
 
