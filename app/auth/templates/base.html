@@ -4,7 +4,7 @@
        <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='files/cake_home_01.jpg') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static',filename='style/style.css') }}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -19,7 +19,7 @@
     {% endif %}
 
 </head>
-<body id= 'home'>
+<body {% block body_id %} {% endblock body_id %}>
     <nav class="navbar navbar-expand-md navbar-dark bg-warning opacity-4 border border-success">
         <div class="container">
             <a href="#brand_section" class="navbar-brand">CakeLand</a>
@@ -53,7 +53,7 @@
 
                     <li class="nav-item p-2">myemail@email.com</li>
                     <li class="nav-item p-2">+1555666777</li>
-
+                    <li class="nav-item p-2 text-b">Blog</li>    
                 </div>
 
             </div>

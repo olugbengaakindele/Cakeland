@@ -1,0 +1,28 @@
+body, html{
+    height:100%;
+    padding:0;
+    margin:0;
+    /*font-family: 'lobster', sans-serif;*/
+    font-family: fantasy;
+    
+}
+
+#home {
+
+    background: url("{{ url_for('static',filename = 'files/cake_home_01.jpg' ) }}")  no-repeat center center/cover;
+
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    z-index :-1;
+
+}
+
+.home-row{
+    top:0;
+    left:0;
+    width: 100%;
+    height: 80vh;
+
+}
