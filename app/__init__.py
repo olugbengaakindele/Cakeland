@@ -6,7 +6,7 @@ db = SQLAlchemy()
 
 #application factory
 def create_app(config_type): #dev, test or prod
-    app = Flask(__name__)
+    app = Flask(__name__, static_url_path='/static')
     configuration = os.path.join(os.getcwd(),'config' , config_type + '.py')
     app.config.from_pyfile(configuration)
 
