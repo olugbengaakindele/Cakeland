@@ -1,1 +1,1 @@
-document.querySelector(".h5").style.color = "#fee0000";
+document.querySelector(".h1").style.color = "red";

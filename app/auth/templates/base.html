@@ -24,7 +24,7 @@
     
     <nav class="navbar navbar-expand-md navbar-dark bg-warning opacity-4 border border-success">
         <div class="container">
-            <a href="{{ url_for('auth.index')}}"class="navbar-brand">CakeLand</a>
+            <a href="{{ url_for('auth.index')}}"class="navbar-brand">fimies_dessertsville</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,19 +36,19 @@
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="{{ url_for('auth.about') }}">About</a>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Gallery</a>
+                        <a class="nav-link" href="{{ url_for('auth.gallery') }}">Gallery</a>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Pricelist</a>
+                        <a class="nav-link" href="{{ url_for('auth.pricelist') }}">Pricelist</a>
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Contact us</a>
+                        <a class="nav-link" href="{{ url_for('auth.contactus') }}">Contact us</a>
                     </li>
                 </ul>
                 <div class="navbar-nav ml-auto text-bold">
@@ -64,16 +64,11 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row home-row">
-            <div class="jumbotron bg-transparent vertical-center w-75 h-50 my-auto mx-auto ">
-                <div class="container">
-                    <p class="h5">A taste that gives you the wow experience</p>
-                </div>
-            </div>
-        </div>
+    
+    {% block landing_line %}
+       
+    {% endblock landing_line %}
 
-    </div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
