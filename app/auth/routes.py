@@ -2,7 +2,7 @@
 
 from app.auth import auth
 from flask import render_template, url_for, redirect
-
+from app.auth.forms import ContactUs
 
 @auth.route("/index")
 def index():
@@ -30,4 +30,5 @@ def pricelist():
 
 @auth.route("/contactus")
 def contactus():
-    return render_template('contactus.html', title='contactus')
+    form = ContactUs()
+    return render_template('contactus.html', title='contactus', form = form)

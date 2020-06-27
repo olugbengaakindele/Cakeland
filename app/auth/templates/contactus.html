@@ -2,22 +2,55 @@
 
 {% block body_id %} 
     {{ super() }}
-    class = 'home_body'
+    class = 'contactus_body'
 
 {% endblock body_id %}
 
-{% block landing_line %}
+{% block content %}
 
-    <div class="container">
-        <div class="row home-row">
-            <div class="jumbotron bg-transparent vertical-center w-75 h-50 my-auto mx-auto ">
-                <div class="container">
-                    <p class="h1">Your Best Plugs Fo Yummy Cakes n Desserts</p>
-                </div>
+   <div class="container">
+
+        <div class="row">
+            
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                
+                <div class="jumbotron mt-10 text-danger">
+               
+                    <form method = "POST" action="">
+                        {{ form.hidden_tag() }}
+                       
+                        <fieldset class="form-group">
+                             <legend class= "border-bottom">Leave us a message</legend>
+                             <div class="form-group">
+                                 {{ form.name.label(class= "h6 form-control-label") }}
+                                 {{ form.name(class= "form-control form-control-lg") }}
+                             </div>
+                             <div class="form-group">
+                                {{ form.email.label(class= "h6 form-control-label") }}
+                                {{ form.email(class= "form-control form-control-lg") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.message.label(class= "h6 form-control-label") }}
+                                {{ form.message(class= "form-control form-control-lg") }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.submit(class= "w-25 btn btn-info form-control") }}
+                            </div>
+                        </fieldset>    
+
+                    </form>
+
+
+
+                </div>    
             </div>
+            <div class="col-md-2"></div>
+            
+
         </div>
 
-    </div>
-
-{%  endblock landing_line %}
+   </div>
+    
+{%  endblock content %}
 

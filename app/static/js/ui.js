@@ -1,1 +1,1 @@
-document.querySelector(".h1").style.color = "red";
+document.querySelector(".h4").style.color = "red";
