@@ -21,3 +21,14 @@ body{
     height: 80vh;
 
 }
+
+
+
+/* .......................................Contact Us page.......................................*/
+.contactus_body{
+    background-color: cadetblue;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+}

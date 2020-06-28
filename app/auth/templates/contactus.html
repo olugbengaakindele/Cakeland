@@ -15,7 +15,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 
-                <div class="jumbotron mt-10 text-danger">
+                <div class="jumbotron mt-50 w-100 h-100 bg-transparent text-danger">
                
                     <form method = "POST" action="">
                         {{ form.hidden_tag() }}
@@ -27,6 +27,13 @@
                                  {{ form.name(class= "form-control form-control-lg") }}
                              </div>
                              <div class="form-group">
+                                <span class="error">
+                                    {% if form.email.errors %}
+                                        {% for error in form.email.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    {% endif %}
+                                </span>
                                 {{ form.email.label(class= "h6 form-control-label") }}
                                 {{ form.email(class= "form-control form-control-lg") }}
                             </div>

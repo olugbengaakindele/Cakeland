@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body_id %} 
+    {{ super() }}
+    class = 'home_body'
+
+{% endblock body_id %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row home-row">
+            <div class="jumbotron bg-transparent vertical-center w-75 h-50 my-auto mx-auto ">
+                <div class="container">
+                    <p class="h1">This is training page</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{%  endblock content %}
+

@@ -1,11 +1,22 @@
 # app/auth/routes
 
 from app.auth import auth
-from flask import render_template, url_for, redirect
+from app import db
+from app.auth.models import Visits
+from flask import render_template, url_for, redirect, session, g,flash
 from app.auth.forms import ContactUs
+from datetime import datetime
+
+
+
+
+    
 
 @auth.route("/index")
 def index():
+    visit_count = Visits(count= 1, visit_date = datetime.utcnow())
+    db.session.add(visit_count)
+    db.session.commit()
     return render_template('index.html', title='Landing_Page')
 
 
@@ -27,8 +38,25 @@ def gallery():
 def pricelist():
     return render_template('pricelist.html', title='pricelist')
 
+@auth.route("/training")
+def training():
+    return render_template('training.html', title='training')
 
 @auth.route("/contactus")
 def contactus():
     form = ContactUs()
+
+    if form.validate_on_submit():
+        flash("Message saved")
+    else:
+        flash("Message saved")
+        return render_template('contactus.html', title='contactus', form = form)
+
     return render_template('contactus.html', title='contactus', form = form)
+
+@auth.route("/admin")
+def admin():
+    return render_template('contactus.html', title='admin')
+
+
+
