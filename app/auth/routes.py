@@ -42,12 +42,13 @@ def pricelist():
 def training():
     return render_template('training.html', title='training')
 
-@auth.route("/contactus")
+@auth.route("/contactus" , methods= ["GET","POST"])
 def contactus():
     form = ContactUs()
 
     if form.validate_on_submit():
         flash("Message saved")
+        return redirect(url_for('auth.home'))
     else:
         flash("Message saved")
         return render_template('contactus.html', title='contactus', form = form)

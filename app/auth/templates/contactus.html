@@ -17,7 +17,7 @@
                 
                 <div class="jumbotron mt-50 w-100 h-100 bg-transparent text-danger">
                
-                    <form method = "POST" action="">
+                    <form method = "POST" action="{{ url_for('auth.contactus') }}">
                         {{ form.hidden_tag() }}
                        
                         <fieldset class="form-group">

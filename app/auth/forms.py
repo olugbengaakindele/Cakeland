@@ -1,21 +1,20 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField,TextAreaField, SubmitField
-from wtforms.validators import Email, Length, DataRequired, ValidationError
+from wtforms.validators import Email, Length, DataRequired, ValidationError, InputRequired
+from wtforms.fields.html5 import EmailField
 
 
-
-'''
 def check_email(form, field):
-        #email_exist = Users.query.filter_by(user_email=field.data).first()
-        if email_exist:
+        if '*@*.*' in field.data:
             raise ValidationError(
                 'email already exist, please go to login page')
 
-'''
+
 
 class ContactUs(FlaskForm):
     name = StringField('Name', validators = [DataRequired()])
-    email = StringField('Email',validators = [DataRequired(),Email(message="please enter a valid email format")])
+    email = StringField('Email',validators = [InputRequired(),Email(message="please enter a valid email format"),
+     check_email])
     message = TextAreaField('Message', validators= [DataRequired() ,Length(max=200 )],render_kw={"rows": 10, "cols": 11})
     submit = SubmitField('Submit')
 
