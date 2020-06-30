@@ -4,7 +4,7 @@ from app.auth import auth
 from app import db
 from app.auth.models import Visits
 from flask import render_template, url_for, redirect, session, g,flash
-from app.auth.forms import ContactUs
+from app.auth.forms import ContactUs, PictureUpload
 from datetime import datetime
 
 
@@ -55,8 +55,9 @@ def contactus():
 
     return render_template('contactus.html', title='contactus', form = form)
 
-@auth.route("/admin")
+@auth.route("/admin", methods=['post','get'])
 def admin():
+    form = PicturUpload()
     return render_template('contactus.html', title='admin')
 
 
