@@ -36,3 +36,20 @@ class Pictures(db.Model):
     
     def __repr__(self):
         return "File has been added to database"
+
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(50))
+    password =  db.Column(db.String(50))
+    role= db.Column(db.String(50))
+
+    def __init__(self,username,password, role):
+        self.username = username
+        self.password = password
+        self.role = role
+    
+    def __repr__(self):
+        return 'Account created'

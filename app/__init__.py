@@ -1,8 +1,15 @@
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
+
 
 db = SQLAlchemy()
+bcrypt= Bcrypt()
+loginmanager = LoginManager()
+
+
 
 #application factory
 def create_app(config_type): #dev, test or prod

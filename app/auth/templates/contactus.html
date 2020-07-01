@@ -1,63 +1,66 @@
 {% extends 'base.html' %}
 
-{% block body_id %} 
-    {{ super() }}
-    class = 'contactus_body'
+{% block body_id %}
+{{ super() }}
+class = 'contactus_body'
 
 {% endblock body_id %}
 
 {% block content %}
 
-   <div class="container">
+<div class="container">
 
-        <div class="row">
-            
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                
-                <div class="jumbotron mt-50 w-100 h-100 bg-transparent text-danger">
-               
-                    <form method = "POST" action="{{ url_for('auth.contactus') }}">
-                        {{ form.hidden_tag() }}
-                       
-                        <fieldset class="form-group">
-                             <legend class= "border-bottom">Leave us a message</legend>
-                             <div class="form-group">
-                                 {{ form.name.label(class= "h6 form-control-label") }}
-                                 {{ form.name(class= "form-control form-control-lg") }}
-                             </div>
-                             <div class="form-group">
-                                <span class="error">
-                                    {% if form.email.errors %}
-                                        {% for error in form.email.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    {% endif %}
-                                </span>
-                                {{ form.email.label(class= "h6 form-control-label") }}
-                                {{ form.email(class= "form-control form-control-lg") }}
-                            </div>
-                            <div class="form-group">
-                                {{ form.message.label(class= "h6 form-control-label") }}
-                                {{ form.message(class= "form-control form-control-lg") }}
-                            </div>
-                            <div class="form-group">
-                                {{ form.submit(class= "w-25 btn btn-info form-control") }}
-                            </div>
-                        </fieldset>    
+    <div class="row">
 
-                    </form>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+            <div class="jumbotron mt-50 w-100 h-100 bg-transparent">
+
+                <form method="POST" action="{{ url_for('auth.contactus') }}">
+                    {{ form.hidden_tag() }}
+
+                    <fieldset class="form-group">
+                        <legend class="border-bottom">Leave us a message</legend>
+                        <div class="form-group">
+                            {{ form.name.label(class= "h6 form-control-label") }}
+                            {{ form.name(class= "form-control form-control-lg") }}
+                        </div>
+
+                        <div class="form-group">
+
+                            {{ form.email.label(class= "h6 form-control-label") }}
+                            {{ form.email(class= "form-control form-control-lg") }}
+                        </div>
+                        <span class="error">
+
+                            {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                            {{ error }}
+                            {% endfor %}
+                            {% endif %}
+
+                        </span>
+                        <div class="form-group">
+                            {{ form.message.label(class= "h6 form-control-label") }}
+                            {{ form.message(class= "form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.submit(class= "w-25 btn btn-info form-control") }}
+                        </div>
+                    </fieldset>
+
+                </form>
 
 
 
-                </div>    
             </div>
-            <div class="col-md-2"></div>
-            
-
         </div>
+        <div class="col-md-2"></div>
 
-   </div>
-    
+
+    </div>
+
+</div>
+
 {%  endblock content %}
-
