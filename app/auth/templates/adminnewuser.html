@@ -7,12 +7,20 @@
 
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <div class="jumbotron mt-50 w-100 h-100 bg-transparent">
-                <form method="POST" action="{{ url_for('auth.dashboard') }}">
+            <div class="jumbotron mt-50 w-75 h-100 bg-transparent">
+                <form method="POST" action="">
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group">
-                        <legend class="border-bottom">Register Here</legend>                        
+                        <legend class="border-bottom">Register Here</legend> 
+                        <span> 
+                            {% if form.username.errors %}
+                                {% for error in form.username.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            {% endif %}
+                        </span>        
                         <div class="form-group">
+                            
                             {{ form.username.label(class= "h6 form-control-label") }}
                             {{ form.username(class= "form-control form-control-lg") }}
                         </div>
@@ -20,11 +28,27 @@
                             {{ form.password.label(class= "h6 form-control-label") }}
                             {{ form.password(class= "form-control form-control-lg") }}
                         </div>
+                        <span> 
+                            {% if form.confirm_password.errors %}
+                                {% for error in form.confirm_password.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            {% endif %}
+                        </span>  
+                        <div class="form-group">
+                            
+                            {{ form.confirm_password.label(class= "h6 form-control-label") }}
+                            {{ form.confirm_password(class= "form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.role.label(class= "h6 form-control-label") }}
+                            {{ form.role(class= "form-control form-control-lg") }}
+                        </div>
                         <div class="form-group">
                             {{ form.submit(class= "w-25 sform-control btn btn-info") }}
                         </div>    
                         <div class="form-group">
-                           <div class="h6 text-info">already have an account? <a href="{{url_for('auth.admin')}}">login here</a></div> 
+                           <div class="h6 text-info">already have an account? <a href="{{url_for('auth.adminlogin')}}">login here</a></div> 
                         </div> 
                   
                     </fieldset>

@@ -8,7 +8,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="jumbotron mt-50 w-100 h-100 bg-transparent">
-                <form method="POST" action="{{ url_for('auth.dashboard') }}">
+                <form method="POST" action="{{ url_for('auth.home') }}">
                     {{ form.hidden_tag() }}
                     <fieldset class="form-group">
                         <legend class="border-bottom">Login Here</legend>                        
@@ -24,7 +24,7 @@
                             {{ form.submit(class= "w-25 sform-control btn btn-info") }}
                         </div>    
                         <div class="form-group">
-                           <div class="h6 text-info">new user? <a href="{{ url_for('auth.dashboard') }}">create new account</a></div> 
+                           <div class="h6 text-info">new user? <a href="{{ url_for('auth.adminnewuser') }}">create new account</a></div> 
                         </div> 
                   
                     </fieldset>

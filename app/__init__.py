@@ -18,6 +18,8 @@ def create_app(config_type): #dev, test or prod
     app.config.from_pyfile(configuration)
 
     db.init_app(app)
+    bcrypt.init_app(app)
+    loginmanager.init_app(app)
 
    #import blueprint
     from app.auth import auth
