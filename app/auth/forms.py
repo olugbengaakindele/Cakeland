@@ -10,7 +10,11 @@ def check_email(form, field):
         if user_exist:
             raise ValidationError('email already exist')
 
-
+def check_email_login(form, field):
+    
+        user_exist = User.query.filter_by(username = field.data).first()
+        if not user_exist:
+            raise ValidationError('email does not exist, please register to gain access.')
 
 class ContactUs(FlaskForm):
     name = StringField('Name', validators = [DataRequired()])
@@ -26,7 +30,7 @@ class PictureUpload(FlaskForm):
     submit = SubmitField('Submit')
 
 class LoginForm(FlaskForm):
-    username = StringField('Email',validators = [InputRequired(),Email(message="please enter a valid email format")])
+    username = StringField('Email',validators = [InputRequired(),Email(message="please enter a valid email format"),check_email_login])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Submit')
 

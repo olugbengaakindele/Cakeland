@@ -17,7 +17,7 @@ def index():
     return render_template('index.html', title='Landing_Page')
 
 
-@auth.route("/home")
+@auth.route("/home", methods = ["POST", "GET"])
 def home():
     return render_template('home.html', title='Home')
 
@@ -58,6 +58,16 @@ def contactus():
 @auth.route("/adminlogin", methods=['POST', 'GET'])
 def adminlogin():
     form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username = form.username.data).first()
+        if bcrypt.generate_password_hash(form.password.data) == user.password:
+            return redirect(url_for("auth.home"))  
+
+        else:
+            flash("Message saved")
+            return redirect(url_for('auth.adminlogin'))
+
+        #
     return render_template('adminlogin.html', title='admin_login', form=form)
 
 
