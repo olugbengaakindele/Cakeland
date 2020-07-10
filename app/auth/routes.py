@@ -60,14 +60,14 @@ def adminlogin():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username = form.username.data).first()
-        if bcrypt.generate_password_hash(form.password.data) == user.password:
-            return redirect(url_for("auth.home"))  
+        if bcrypt.check_password_hash(user.password,form.password.data):
+            return redirect(url_for("auth.dashboard"))  
 
         else:
             flash("Message saved")
             return redirect(url_for('auth.adminlogin'))
 
-        #
+    
     return render_template('adminlogin.html', title='admin_login', form=form)
 
 
@@ -79,3 +79,8 @@ def adminnewuser():
         return redirect(url_for('auth.adminlogin'))
 
     return render_template('adminnewuser.html', title='register_user', form=form)
+
+
+@auth.route("/admin/dashboard", methods= ["GET","POST"])
+def dashboard():
+    return render_template("dashboard.html", title = "Dashbaord")
