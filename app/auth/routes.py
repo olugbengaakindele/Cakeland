@@ -84,3 +84,7 @@ def adminnewuser():
 @auth.route("/admin/dashboard", methods= ["GET","POST"])
 def dashboard():
     return render_template("dashboard.html", title = "Dashbaord")
+
+@auth.route("/admin/upload", methods= ["GET","POST"])
+def upload():
+    return render_template("upload.html", title = "uploads")
