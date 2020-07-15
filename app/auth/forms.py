@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextAreaField, SubmitField, PasswordField, SelectField
+from wtforms import StringField,TextAreaField, SubmitField, PasswordField, SelectField, FileField
 from wtforms.validators import Email, Length, DataRequired, ValidationError, InputRequired, EqualTo
 from wtforms.fields.html5 import EmailField
 from app.auth.models import User
@@ -40,3 +40,10 @@ class NewUserForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password', message = 'password must match')])
     role = SelectField('Role', choices=[('Administrator','Administrator')])
     submit = SubmitField('Submit')
+
+class FormUpload(FlaskForm):
+    picname = StringField('Name', validators = [DataRequired()])
+    category = SelectField('Role', choices=[('Birthday','Birthday'),('Wedding', 'Wedding')])
+    description= TextAreaField('Description', validators= [DataRequired() ,Length(max=200 )],render_kw={"rows": 10, "cols": 11})
+    file = FileField()
+

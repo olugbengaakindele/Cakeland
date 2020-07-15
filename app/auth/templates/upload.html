@@ -18,7 +18,24 @@
             </div>
 
             <div class="col-lg-10">
-          
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group m-auto w-75">
+                    <legend class="border-bottom">Upload Pictures Here</legend>                        
+                    <div class="form-group">
+                        {{ form.picname.label(class= "h6 form-control-label") }}
+                        {{ form.picname(class= "form-control form-control-lg") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.category.label(class= "h6 form-control-label") }}
+                        {{ form.category(class= "form-control form-control-lg") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.file(class= "form-control btn btn-block") }}
+                    </div>    
+                    
+                </fieldset>
+
+            </form>
             </div>  
 
         </div>

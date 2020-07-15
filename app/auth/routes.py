@@ -4,7 +4,7 @@ from app.auth import auth
 from app import db, bcrypt
 from app.auth.models import Visits
 from flask import render_template, url_for, redirect, session, g, flash
-from app.auth.forms import ContactUs, PictureUpload, LoginForm, NewUserForm
+from app.auth.forms import ContactUs, PictureUpload, LoginForm, NewUserForm,FormUpload
 from datetime import datetime
 from app.auth.models import User
 
@@ -87,4 +87,6 @@ def dashboard():
 
 @auth.route("/admin/upload", methods= ["GET","POST"])
 def upload():
-    return render_template("upload.html", title = "uploads")
+    form = FormUpload()
+    return render_template("upload.html", title = "uploads", form= form)
+
