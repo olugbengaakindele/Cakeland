@@ -3,6 +3,16 @@ from wtforms import StringField,TextAreaField, SubmitField, PasswordField, Selec
 from wtforms.validators import Email, Length, DataRequired, ValidationError, InputRequired, EqualTo
 from wtforms.fields.html5 import EmailField
 from app.auth.models import User
+from flask_wtf.file import FileAllowed
+import os,app
+
+
+def save_pic(file_name, category,pic_name):
+    f_name, f_ext = os.path.splittext(file_name.filename)
+    img_name = category + "_" + f_name + "_" + f_ext
+    img_path = os.path.join(app.root_path,'static/files',img_name)
+    file_name.save(img_path)
+    return img_name
 
 def check_email(form, field):
     
@@ -43,7 +53,7 @@ class NewUserForm(FlaskForm):
 
 class FormUpload(FlaskForm):
     picname = StringField('Name', validators = [DataRequired()])
-    category = SelectField('Role', choices=[('Birthday','Birthday'),('Wedding', 'Wedding')])
-    description= TextAreaField('Description', validators= [DataRequired() ,Length(max=200 )],render_kw={"rows": 10, "cols": 11})
-    file = FileField()
-
+    category = SelectField('Category', choices=[('Birthday','Birthday'),('Wedding', 'Wedding')])
+    #description= TextAreaField('Description', validators= [DataRequired() ,Length(max=200 )],render_kw={"rows": 10, "cols": 11})
+    file = FileField('Upload Picture', validators= [FileAllowed(['jpg','png'])])
+    submit = SubmitField('Submit')

@@ -1,5 +1,9 @@
 from app import db, bcrypt
 from datetime import datetime
+from app import loginmanager
+from flask_login import UserMixin
+
+
 
 
 class Visits(db.Model):
@@ -35,7 +39,7 @@ class Pictures(db.Model):
         return "File has been added to database"
 
 
-class User(db.Model):
+class User(UserMixin,db.Model ):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -62,3 +66,8 @@ class User(db.Model):
         db.session.commit()
 
         return user
+
+
+@loginmanager.user_loader
+def load_user(id):
+    return User.query.get(int(id))

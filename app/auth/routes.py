@@ -4,9 +4,12 @@ from app.auth import auth
 from app import db, bcrypt
 from app.auth.models import Visits
 from flask import render_template, url_for, redirect, session, g, flash
-from app.auth.forms import ContactUs, PictureUpload, LoginForm, NewUserForm,FormUpload
+from app.auth.forms import ContactUs, PictureUpload, LoginForm, NewUserForm,FormUpload,save_pic
 from datetime import datetime
 from app.auth.models import User
+from app import loginmanager
+from flask_login import login_user,login_required
+
 
 
 @auth.route("/index")
@@ -61,6 +64,7 @@ def adminlogin():
     if form.validate_on_submit():
         user = User.query.filter_by(username = form.username.data).first()
         if bcrypt.check_password_hash(user.password,form.password.data):
+            login_user(user)
             return redirect(url_for("auth.dashboard"))  
 
         else:
@@ -82,11 +86,16 @@ def adminnewuser():
 
 
 @auth.route("/admin/dashboard", methods= ["GET","POST"])
+@login_required
 def dashboard():
     return render_template("dashboard.html", title = "Dashbaord")
 
 @auth.route("/admin/upload", methods= ["GET","POST"])
 def upload():
     form = FormUpload()
+    if form.validate_on_submit():
+        pic_name = save_pic(form.file.file_name,'cf','lk')
+        return redirect(url_for('auth.adminlogin'))
+         
+    
     return render_template("upload.html", title = "uploads", form= form)
-
