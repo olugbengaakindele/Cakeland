@@ -8,9 +8,9 @@ import os,app
 
 
 def save_pic(file_name, category,pic_name):
-    f_name, f_ext = os.path.splittext(file_name.filename)
+    f_name, f_ext = os.path.splitext(file_name.filename)
     img_name = category + "_" + f_name + "_" + f_ext
-    img_path = os.path.join(app.root_path,'static/files',img_name)
+    img_path = os.path.join(os.getcwd(),'app/static/files',img_name)
     file_name.save(img_path)
     return img_name
 
