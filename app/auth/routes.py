@@ -95,7 +95,6 @@ def upload():
     form = FormUpload()
     if form.validate_on_submit():
         pic_name = save_pic(form.file.data,form.category.data,'lk')
-        return redirect(url_for('auth.adminlogin'))
-         
+        return render_template("upload.html", title = "uploads", form= form)
     
     return render_template("upload.html", title = "uploads", form= form)
