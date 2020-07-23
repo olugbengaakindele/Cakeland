@@ -5,6 +5,20 @@ from wtforms.fields.html5 import EmailField
 from app.auth.models import User
 from flask_wtf.file import FileAllowed
 import os,app
+from os import walk
+
+
+def galleryPics():
+    directory = os.path.join(os.getcwd(),'app','static','files')
+    allpics =[]
+    for filename in os.listdir(directory):
+        if filename.endswith(".jpg") or filename.endswith(".png") or filename.endswith(".PNG") or filename.endswith(".JPG"):
+            allpics.append( filename)
+            #os.path.join(directory,
+
+   
+    return allpics
+
 
 
 def save_pic(file_name, category,pic_name):

@@ -4,5 +4,5 @@ function setup() {
 }
 
 function draw(){
-    console.log(draw);
+   //console.log(draw);
 }

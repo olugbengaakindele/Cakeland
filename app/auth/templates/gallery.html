@@ -12,7 +12,18 @@
         <div class="row home-row">
             <div class="jumbotron bg-transparent vertical-center w-75 h-50 my-auto mx-auto ">
                 <div class="container">
-                    <p class="h1">Your Best Plugs Fo Yummy Cakes n Desserts</p>
+                    
+                    <!-- loop throughtthe all gallery pictures-->
+                 <h5>{{ d }}</h5>
+                    {% for pics in allpics %}
+                        <di class="row">
+                            <div class="container">
+                                <img src="{{ url_for('static', filename = 'files/')}}{{ pics }} "  class="img-fluid" alt="Responsive image"/>
+                            </div>
+                        </di>
+
+
+                    {% endfor %}
                 </div>
             </div>
         </div>

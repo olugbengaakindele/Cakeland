@@ -4,12 +4,12 @@ from app.auth import auth
 from app import db, bcrypt
 from app.auth.models import Visits
 from flask import render_template, url_for, redirect, session, g, flash
-from app.auth.forms import ContactUs, PictureUpload, LoginForm, NewUserForm,FormUpload,save_pic
+from app.auth.forms import ContactUs, PictureUpload, LoginForm, NewUserForm,FormUpload,save_pic, galleryPics
 from datetime import datetime
 from app.auth.models import User
 from app import loginmanager
 from flask_login import login_user,login_required
-
+import os
 
 
 @auth.route("/index")
@@ -32,7 +32,10 @@ def about():
 
 @auth.route("/gallery")
 def gallery():
-    return render_template('gallery.html', title='gallery')
+    allpics = galleryPics()
+    
+
+    return render_template('gallery.html', title='gallery', allpics = allpics)
 
 
 @auth.route("/pricelist")
