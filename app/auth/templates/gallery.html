@@ -11,20 +11,24 @@
     <div class="container">
         <div class="row home-row">
             <div class="jumbotron bg-transparent vertical-center w-75 h-50 my-auto mx-auto ">
-                <div class="container">
-                    
-                    <!-- loop throughtthe all gallery pictures-->
-                 <h5>{{ d }}</h5>
+                    <!-- loop throughtthe all gallery pictures-->            
                     {% for pics in allpics %}
+                       
                         <di class="row">
-                            <div class="container">
+                            <div class="col-lg-3">
+                                <img src="{{ url_for('static', filename = 'files/')}}{{ pics }} "  class="img-fluid" alt="Responsive image"/>
+                            </div>
+                            <div class="col-lg-3">
+                                <img src="{{ url_for('static', filename = 'files/')}}{{  pics }} "  class="img-fluid" alt="Responsive image"/>
+                            </div>
+                            <div class="col-lg-3">
                                 <img src="{{ url_for('static', filename = 'files/')}}{{ pics }} "  class="img-fluid" alt="Responsive image"/>
                             </div>
                         </di>
 
 
                     {% endfor %}
-                </div>
+           
             </div>
         </div>
 
